@@ -1032,13 +1032,13 @@ class Create(BaseActivity):
         # FIXME(tsileo): add a BACKEND.note_activity_url, and pass the actor to both
         self._data["object"]["id"] = uri + "/activity"
         self._data["object"]["url"] = BACKEND.note_url(obj_id)
-        if isinstance(self.ctx(), Note):
-            try:
-                # FIXME(tsileo): use a weakref instead of ctx, and make it generic to every object (when
-                # building things (and drop the set_ctx usage), and call _outbox_set_id on it?
-                self.ctx().id = self._data["object"]["id"]
-            except NotImplementedError:
-                pass
+        # if isinstance(self.ctx(), Note):
+        #     try:
+        #         # FIXME(tsileo): use a weakref instead of ctx, and make it generic to every object (when
+        #         # building things (and drop the set_ctx usage), and call _outbox_set_id on it?
+        #         self.ctx().id = self._data["object"]["id"]
+        #     except NotImplementedError:
+        #         pass
         self.reset_object_cache()
 
     def _init(self, **kwargs):
